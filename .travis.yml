@@ -21,5 +21,18 @@ after_success:
   - docker push nigelfrnds/complex-server
   - docker push nigelfrnds/complex-worker
 
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: ca-central-1
+  app: docker-complex-test
+  env: DockerComplexTest-env
+  bucket_name: elasticbeanstalk-ca-central-1-901472457604
+  bucket_path: docker-complex-test
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+
 
 
